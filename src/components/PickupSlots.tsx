@@ -32,16 +32,13 @@ const timeSlots: TimeSlot[] = [
 
 const PickupSlots = () => {
   return (
-    <section className="animate-slide-up animation-delay-200">
-      <div className="flex items-center justify-between mb-6">
-        <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
-          <Calendar className="h-6 w-6 text-primary" />
-          PICKUP & DELIVERY SLOTS
+    <section className="animate-slide-up animation-delay-200 mb-16">
+      <div className="mb-8 text-center">
+        <h2 className="text-3xl font-bold text-foreground mb-2 flex items-center justify-center gap-2">
+          <Calendar className="h-7 w-7 text-primary" />
+          Schedule Your Pickup
         </h2>
-        <Button variant="cta" size="xl" className="gap-2">
-          <Plus className="h-5 w-5" />
-          NEW ORDER
-        </Button>
+        <p className="text-muted-foreground">Select your preferred pickup time slot</p>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
