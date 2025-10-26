@@ -2,9 +2,9 @@ import { Facebook, Twitter, Instagram, Mail, Phone } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-card border-t border-border mt-16">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+    <footer className="bg-card border-t border-border mt-8 md:mt-16">
+      <div className="container mx-auto px-4 py-8 md:py-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-6 md:mb-8">
           {/* Company Info */}
           <div>
             <h3 className="font-bold text-foreground mb-4">LAUNDRY HUB</h3>
