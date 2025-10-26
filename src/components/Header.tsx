@@ -1,6 +1,9 @@
-import { WashingMachine, User, Plus, Menu, X } from "lucide-react";
+import { WashingMachine, User, Plus, Menu, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -17,6 +20,25 @@ import {
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const { toast } = useToast();
+
+  const handleLogout = async () => {
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+      toast({
+        title: "Error",
+        description: "Failed to logout. Please try again.",
+        variant: "destructive",
+      });
+    } else {
+      toast({
+        title: "Logged out",
+        description: "You've been successfully logged out.",
+      });
+      navigate("/auth");
+    }
+  };
 
   return (
     <header className="bg-card border-b border-border shadow-sm sticky top-0 z-50">
@@ -127,7 +149,11 @@ const Header = () => {
               <DropdownMenuContent align="end" className="w-48 bg-card z-50">
                 <DropdownMenuItem className="cursor-pointer">Profile</DropdownMenuItem>
                 <DropdownMenuItem className="cursor-pointer">Settings</DropdownMenuItem>
-                <DropdownMenuItem className="text-destructive cursor-pointer">
+                <DropdownMenuItem 
+                  className="text-destructive cursor-pointer"
+                  onClick={handleLogout}
+                >
+                  <LogOut className="h-4 w-4 mr-2" />
                   Logout
                 </DropdownMenuItem>
               </DropdownMenuContent>
